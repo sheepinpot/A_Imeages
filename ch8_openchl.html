@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>갬블링 게임</title>
+    <style>
+        p{
+            color: blueviolet;
+            font-style: italic;
+        }
+        span{
+            font-size: 100px;
+            padding: 10px;
+            color: blue;
+        }
+        div{
+            display: inline-block;
+            border: 2px solid black;
+            width: 250px;
+            height: 150px;
+            background-color: blanchedalmond;
+        }
+    </style>
+
+   
+ 
+</head>
+
+<body >
+    <h3>갬블링 게임</h3>
+    각 숫자를 클릭하면 0에서 2사이의 난수로 바뀝니다. 모두 같은 수가 나오면 승리합니다.
+    <hr>
+   
+    
+    <div>
+        <span class="num" onclick="init(0)">0</span>
+
+        <span class="num" onclick="init(1)">0</span>
+
+        <span class="num" onclick="init(2)"> 0</span>
+
+    </div> <br>
+
+    <p class="result" onclick="again()"></p>
+   
+</body>
+
+<script>
+    let nums = document.querySelectorAll('span');
+    let finon = document.querySelector('p');
+    function init(ob){
+        let num = Math.floor(Math.random()*3);
+        nums[ob].innerText = num;
+        if(ob == 2){
+            if(nums[0].innerText == nums[2].innerText && nums[1].innerText == nums[2].innerText){
+                finon.innerText = '성공했습니다!(클릭하면 다시 시작합니다.)';
+            }
+            else{
+                finon.innerText = '틀렸네요!(클릭하면 다시 시작합니다.)';
+            }
+        }
+    }
+    function again(){
+        finon.innerText = '';
+        for(i=0;i<nums.length;i++){
+            nums[i].innerText = '0';
+        }
+    }
+</script>
+
+</html>
